@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-calc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-calc
+  template:
+    metadata:
+      labels:
+        app: web-calc
+    spec:
+      containers:
+        - name: web-calc
+          image: localhost:5000/web-calc:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
